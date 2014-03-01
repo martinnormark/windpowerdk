@@ -27,4 +27,6 @@ fs.exists(spreadsheetFilePath, function(exists) {
 });
 
 // Parse the spreadsheet
-parser.parseSpreadsheet(spreadsheetFilePath, config.outputPath);
+parser.parseSpreadsheet(spreadsheetFilePath, config.outputPath, function (geoJson) {
+	console.log(JSON.stringify(geoJson) || "nothing");
+});

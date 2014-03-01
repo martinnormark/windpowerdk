@@ -8,9 +8,11 @@
 
 'use strict';
 
-var excelParser = require('excel-parser');
+var config = require('../config'),
+	excelParser = require('excel-parser'),
+	utmConverter = require('./utmconverter');
 
-exports.parseSpreadsheet = function (spreadsheetFilePath, outputPath) {
+exports.parseSpreadsheet = function (spreadsheetFilePath, outputPath, callback) {
 	excelParser.parse({
 		inFile: spreadsheetFilePath,
 		worksheet: 1,
@@ -18,6 +20,32 @@ exports.parseSpreadsheet = function (spreadsheetFilePath, outputPath) {
 	},function (err, records) {
 		if (err) console.error(err);
 
-		console.log(records);		
+		var geoJson = {
+			type: 'FeatureCollection',
+  			features: []
+  		};
+
+		// UTM east: index14
+		// UTM north: index15
+		for (var i = 0; i < records.length; i++) {
+			var row = records[i],
+				latLong = utmConverter.toLatLong(row[15], row[14], config.utmZone);
+
+			if (latLong && latLong.lat && latLong.lon) {
+				var feature = {
+					type: 'Feature',
+					geometry: {
+						type: 'Point',
+						coordinates: [latLong.lon, latLong.lat]
+					}
+				};
+
+				geoJson.features.push(feature);
+			};
+		};
+
+		if (callback) {
+			callback(geoJson);
+		};
 	});
 };
