@@ -12,6 +12,10 @@ var config = require('../config'),
 	excelParser = require('excel-parser'),
 	utmConverter = require('./utmconverter');
 
+function precise_round(num,decimals){
+	return Math.round(num*Math.pow(10,decimals))/Math.pow(10,decimals);
+}
+
 exports.parseSpreadsheet = function (spreadsheetFilePath, outputPath, callback) {
 	excelParser.parse({
 		inFile: spreadsheetFilePath,
@@ -36,8 +40,9 @@ exports.parseSpreadsheet = function (spreadsheetFilePath, outputPath, callback) 
 					type: 'Feature',
 					geometry: {
 						type: 'Point',
-						coordinates: [latLong.lon, latLong.lat]
-					}
+						coordinates: [precise_round(latLong.lon, 2), precise_round(latLong.lat, 2)]
+					},
+					properties: {}
 				};
 
 				geoJson.features.push(feature);
