@@ -8,8 +8,8 @@
 
 'use strict';
 
-exports.awesome = function() {
-  return 'awesome';
+module.exports = {
+	dataUrl: 'http://www.ens.dk/sites/ens.dk/files/byggeri/anlaegprodtilnettet.xls',
+	outputPath: './data/windpowerdk.geojson',
+	utmZone: 32
 };
-
-console.log("hello world");
