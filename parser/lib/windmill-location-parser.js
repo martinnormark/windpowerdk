@@ -40,7 +40,7 @@ exports.parseSpreadsheet = function (spreadsheetFilePath, outputPath, callback) 
 					type: 'Feature',
 					geometry: {
 						type: 'Point',
-						coordinates: [precise_round(latLong.lon, 2), precise_round(latLong.lat, 2)]
+						coordinates: [precise_round(latLong.lon, 7), precise_round(latLong.lat, 7)]
 					},
 					properties: {}
 				};
