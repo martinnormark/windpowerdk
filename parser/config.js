@@ -9,7 +9,7 @@
 'use strict';
 
 module.exports = {
-	dataUrl: 'http://www.ens.dk/sites/ens.dk/files/info/tal-kort/oversigtstabeller_uk-dk.xls',
+	dataUrl: 'http://www.ens.dk/sites/ens.dk/files/byggeri/anlaegprodtilnettet.xls',
 	outputPath: './data/windpowerdk.geojson',
 	utmZone: 32
 };
