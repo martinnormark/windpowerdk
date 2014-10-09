@@ -42,7 +42,13 @@ exports.parseSpreadsheet = function (spreadsheetFilePath, outputPath, callback) 
 						type: 'Point',
 						coordinates: [precise_round(latLong.lon, 7), precise_round(latLong.lat, 7)]
 					},
-					properties: {}
+					properties: {
+						capacityKw: parseInt(row[2]),
+						rotorDiameterMeter: parseFloat(row[3]),
+						hubHeightMeter: parseFloat(row[4]),
+						manufacturer: row[5],
+						typeOfLocation: row[9]
+					}
 				};
 
 				geoJson.features.push(feature);
