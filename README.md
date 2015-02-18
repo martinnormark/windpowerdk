@@ -13,4 +13,4 @@ http://www.ens.dk/da-dk/info/talogkort/statistik_og_noegletal/oversigt_over_ener
 The precision of the point data is amazing - just take a look at this map:
 ![Windpower Denmark example map](windpower-denmark-map-example.png)
 
-[View map](https://a.tiles.mapbox.com/v4/martinnormark.hdkd96nl/page.html?access_token=pk.eyJ1IjoibWFydGlubm9ybWFyayIsImEiOiJWb2x0aFkwIn0.ue2SbNWU8Caf_BRDlWjMlQ#7/55.878/9.646)
+[View map](http://martinnormark.github.io/windpowerdk/)
